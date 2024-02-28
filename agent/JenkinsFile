@@ -4,6 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'ls'
+                sleep '10'
             }
         }
 
@@ -14,6 +15,7 @@ pipeline {
                     ls -ltr
                     echo "------------Test 1 stage------------------"
                 '''
+                sleep '10'
             }
         }
 
@@ -24,6 +26,7 @@ pipeline {
                     ps -ef
                     echo "------------Test 2 stage------------------"
                 '''
+                sleep '10'
             }
         }
     }
