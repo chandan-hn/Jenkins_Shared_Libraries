@@ -14,8 +14,8 @@ pipeline {
                     #!/bin/bash
                     ls -ltr
                     echo "------------Test 1 stage------------------"
-                    'sleep 10'
                 '''
+                sh 'sleep 10'
                 
             }
         }
@@ -26,8 +26,8 @@ pipeline {
                     #!/bin/bash
                     ps -ef
                     echo "------------Test 2 stage------------------"
-                    'sleep 10'
                 '''
+                 sh 'sleep 10'
             }
         }
     }
