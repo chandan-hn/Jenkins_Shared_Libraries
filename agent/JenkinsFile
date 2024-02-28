@@ -1,0 +1,14 @@
+pipeline{
+    agent any
+    stages{
+        stage('Build'){
+            sh 'ls'
+        }
+        stage('Test'){
+            sh '''
+            #!/bin/bash
+            ls -ltr
+            echo "test stage"
+        }
+    }
+}
