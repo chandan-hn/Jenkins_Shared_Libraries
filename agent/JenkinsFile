@@ -2,13 +2,13 @@ pipeline {
     agent any
     stages {
         stage('Build') {
-            step {
+            steps {
                 sh 'ls'
             }
         }
 
         stage('Test') {
-            step {
+            steps {
                 sh '''
                     #!/bin/bash
                     ls -ltr
