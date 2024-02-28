@@ -9,6 +9,7 @@ pipeline {
             sh '''
                 #!/bin/bash
                 ls -ltr
+                echo "test stage"
             '''
         }
     }
