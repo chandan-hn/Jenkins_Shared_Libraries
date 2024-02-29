@@ -1,10 +1,7 @@
 pipeline {
-    agent {
-        label 'slave1'
-    }
+    agent any
 
     parameters {
-        
         booleanParam(name: 'CHECKOUT', defaultValue: true, description: 'Toggle this value')
         booleanParam(name: 'BUILD', defaultValue: true, description: 'Toggle this value')
         booleanParam(name: 'TEST', defaultValue: true, description: 'Toggle this value')
@@ -30,6 +27,7 @@ pipeline {
                 expression {
                     params.BUILD == true
                 }
+            }
             steps {
                 sh '''
                 mvn clean install        
@@ -44,6 +42,7 @@ pipeline {
                 expression {
                     params.TEST == true
                 }
+            }
             steps {
                 sh '''
                     #!/bin/bash
@@ -57,10 +56,6 @@ pipeline {
             when {
                 expression {
                     params.DEPLOY == true
-                }
-             when {
-                expression {
-                    params.CHECKOUT == true
                 }
             }
             steps {
