@@ -10,12 +10,12 @@ pipeline {
         stage('CheckOut') {
             steps {
                 checkout([$class: 'GitSCM', 
-                branches: [[name: '*/main']],
+                branches: [[name: '*/master']],
                 userRemoteConfigs: [[url: 'https://github.com/chandan-hn/Maven_Demo.git', credentialsID: 'github']]])
             }
         }
 
-        stage('Test1') {
+        stage('Build') {
             steps {
                 sh '''
                 mvn clean install        
