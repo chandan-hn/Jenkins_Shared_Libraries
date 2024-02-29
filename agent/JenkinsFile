@@ -11,7 +11,7 @@ pipeline {
             steps {
                 checkout([$class: 'GitSCM', 
                 branches: [[name: '*/master']],
-                userRemoteConfigs: [[url: 'https://github.com/chandan-hn/Maven_Demo.git', credentialsId: 'slave1_ssh']]])
+                userRemoteConfigs: [[url: 'https://github.com/chandan-hn/Maven_Demo.git', credentialsId: 'github']]])
             }
         }
 
