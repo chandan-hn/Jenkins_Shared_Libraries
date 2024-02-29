@@ -11,7 +11,7 @@ pipeline {
             steps {
                 checkout([$class: 'GitSCM', 
                 branches: [[name: '*/master']],
-                userRemoteConfigs: [[url: 'https://github.com/chandan-hn/Maven_Demo.git', credentialsID: 'github']]])
+                userRemoteConfigs: [[url: 'https://github.com/chandan-hn/Maven_Demo.git', credentialsId: 'slave1_ssh']]])
             }
         }
 
@@ -25,7 +25,17 @@ pipeline {
             }
         }
 
-        stage('Test2') {
+        stage('Test') {
+            steps {
+                sh '''
+                    #!/bin/bash
+                    ps -ef
+                    echo "------------Test 2 stage------------------"
+                '''
+                 sh 'sleep 10'
+            }
+        }
+        stage('Deploy') {
             steps {
                 sh '''
                     #!/bin/bash
