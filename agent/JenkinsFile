@@ -2,16 +2,16 @@ pipeline {
     agent {
         label 'slave1'
     }
+
+     triggers {
+            cron('*/59 * * * *')
+        }
     stages {
         stage('Build') {
             steps {
                 sh 'ls'
                 sh 'sleep 10'
             }
-        }
-
-        triggers {
-            cron('*/59 * * * *')
         }
 
         stage('Test1') {
