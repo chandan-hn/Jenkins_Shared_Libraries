@@ -37,7 +37,10 @@ pipeline {
             }
         }
 
-        stage('Test') {
+        stage("Running multiple stages") {
+        parallel {
+
+        stage('Test1') {
             when {
                 expression {
                     params.TEST == true
@@ -52,6 +55,24 @@ pipeline {
                  sh 'sleep 10'
             }
         }
+
+        stage('Test2') {
+            when {
+                expression {
+                    params.TEST == true
+                }
+            }
+            steps {
+                sh '''
+                    #!/bin/bash
+                    ps -ef
+                    echo "------------Test 2 stage------------------"
+                '''
+                 sh 'sleep 10'
+            }
+        }
+    }
+}
         stage('Deploy') {
             when {
                 expression {
