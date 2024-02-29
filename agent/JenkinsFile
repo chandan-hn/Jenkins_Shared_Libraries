@@ -3,11 +3,21 @@ pipeline {
         label 'slave1'
     }
 
-     triggers {
-            cron('*/59 * * * *')
-        }
+    parameters {
+        
+        booleanParam(name: 'CHECKOUT', defaultValue: true, description: 'Toggle this value')
+        booleanParam(name: 'BUILD', defaultValue: true, description: 'Toggle this value')
+        booleanParam(name: 'TEST', defaultValue: true, description: 'Toggle this value')
+        booleanParam(name: 'DEPLOY', defaultValue: false, description: 'Toggle this value')
+    }
+
     stages {
         stage('CheckOut') {
+            when {
+                expression {
+                    params.CHECKOUT == true
+                }
+            }
             steps {
                 checkout([$class: 'GitSCM', 
                 branches: [[name: '*/master']],
@@ -16,6 +26,10 @@ pipeline {
         }
 
         stage('Build') {
+            when {
+                expression {
+                    params.BUILD == true
+                }
             steps {
                 sh '''
                 mvn clean install        
@@ -26,6 +40,10 @@ pipeline {
         }
 
         stage('Test') {
+            when {
+                expression {
+                    params.TEST == true
+                }
             steps {
                 sh '''
                     #!/bin/bash
@@ -36,7 +54,17 @@ pipeline {
             }
         }
         stage('Deploy') {
+            when {
+                expression {
+                    params.DEPLOY == true
+                }
+             when {
+                expression {
+                    params.CHECKOUT == true
+                }
+            }
             steps {
+                
                 sh '''
                     #!/bin/bash
                     ps -ef
