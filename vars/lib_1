@@ -1,3 +1,0 @@
-def lib1() {
-  sh echo "Hello!!!"
-}
