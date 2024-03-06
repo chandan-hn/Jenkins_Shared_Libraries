@@ -6,6 +6,6 @@ def call() {
         
         echo "Comany name is: $company_name"
         echo "URL is: $url"
-        echo "IP_ADDRESS is: ip_address"
+        echo "IP_ADDRESS is : $ip_address"
     }
 }
