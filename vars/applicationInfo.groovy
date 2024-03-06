@@ -1,3 +1,3 @@
 def call() {
-  sh 'Hi'
+  ls -ltr
 }
