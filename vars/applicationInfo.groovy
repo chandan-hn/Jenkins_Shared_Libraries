@@ -1,5 +1,7 @@
 def call() {
-  sh 'company_name: Amazon'
-  sh 'url: www.amazon.com'
-  sh "192.168.29.193"
+  script {
+  company_name: Amazon
+  url: www.amazon.com
+  192.168.29.193"
+  }
 }
