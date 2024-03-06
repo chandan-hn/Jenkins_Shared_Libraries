@@ -1,3 +1,3 @@
 def call() {
-  sh 'company_name: Amazon'
+  sh 'Hi'
 }
