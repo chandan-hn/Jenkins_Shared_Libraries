@@ -1,4 +1,4 @@
-def call() {
+def companyInfo() {
     script {
         company_name = "Amazon"
         url = "www.amazon.com"
